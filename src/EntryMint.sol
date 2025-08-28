@@ -11,7 +11,8 @@ error AlreadyMinted();
 
 contract EntryMint is ERC721, Ownable {
     uint256 public totalSupply;
-    uint256 public constant MAX_SUPPLY = 1000;
+    // ** set to 2 for testing, set to 100/1k/10k for prod **
+    uint256 public constant MAX_SUPPLY = 2;
     mapping(address minter => uint256 mintedCount) public minted;
 
     constructor() ERC721("EntryMint", "EMINT") Ownable(msg.sender) {}
