@@ -35,8 +35,8 @@ contract EntryTest is Test {
     function test_RevertOnDoubleMint() public {
         entryMint.mint();
         assertEq(entryMint.minted(address(this)), 1);
-        entryMint.mint();
         vm.expectRevert(AlreadyMinted.selector);
+        entryMint.mint();
     }
 
     // Testing supply cap *ASSUME MAX_SUPPLY IS 2*
@@ -48,7 +48,7 @@ contract EntryTest is Test {
         entryMint.mint();
 
         // mint as self
-        entryMint.mint();
         vm.expectRevert(OutOfSupply.selector);
+        entryMint.mint();
     }
 }
