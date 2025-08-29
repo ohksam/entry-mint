@@ -9,6 +9,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 error OutOfSupply();
 error AlreadyMinted();
 
+// emit minting to allow frontend to dynamically update
+event Minted(address indexed minter, uint256 tokenId);
+
 contract EntryMint is ERC721, Ownable {
     uint256 public totalSupply;
     // ** set to 2 for testing, set to 100/1k/10k for prod **
@@ -21,8 +24,9 @@ contract EntryMint is ERC721, Ownable {
         if (totalSupply >= MAX_SUPPLY) revert OutOfSupply();
         if (minted[msg.sender] >= 1) revert AlreadyMinted();
 
-        totalSupply++;
+        uint256 tokenId = ++totalSupply; // increments totalSupply and sets tokenId
         minted[msg.sender]++;
-        _safeMint(msg.sender, totalSupply);        
+        _safeMint(msg.sender, tokenId);
+        emit Minted(msg.sender, tokenId);
     }
 }
