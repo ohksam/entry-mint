@@ -33,3 +33,28 @@ function App() {
 }
 
 export default App
+
+import { WagmiProvider, createConfig } from 'wagmi'
+import { sepolia } from 'wagmi/chains';
+import { createPublicClient, http } from 'viem';
+import { BrowserRouter as Router, Routes, Route } from 'react-router';
+ 
+const config = createConfig({
+  publicClient: createPublicClient({
+    chain: sepolia,
+    transport: http()
+  }),
+})
+ 
+function App() {
+  return (
+    <WagmiProvider config={config} reconnectOnMount={true}>
+      <Router>
+        {/* <Navigation /> */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </Router>
+    </WagmiProvider>
+  )
+}
