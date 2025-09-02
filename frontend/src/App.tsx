@@ -40,11 +40,13 @@ import { createClient, http } from 'viem';
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
 
 import HomePage from './components/HomePage';
+import Gate from './components/Gate';
+import Success from './components/Success';
 
 const config = createConfig({
   chains: [sepolia],
   client({ chain }) {
-    return createClient({ chain, transport: http()})
+    return createClient({ chain, transport: http()}) // what's the http argument?
   }
 })
  
@@ -55,6 +57,8 @@ function App() {
         {/* <Navigation /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/gate" element={<Gate />} />
+          <Route path="/success" element={<Success />}/>
         </Routes>
       </Router>
     </WagmiProvider>
