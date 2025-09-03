@@ -14,6 +14,7 @@ const HomePage = () => {
     return (
         <div>
             <h1>Welcome to EntryMint!</h1>
+            <button>Connect wallet!</button>
         </div>
     )
 }
