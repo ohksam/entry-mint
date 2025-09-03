@@ -39,6 +39,7 @@ import { sepolia } from 'wagmi/chains';
 import { createClient, http } from 'viem';
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
 
+import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
 import Gate from './components/Gate';
 import Success from './components/Success';
@@ -54,7 +55,7 @@ function App() {
   return (
     <WagmiProvider config={config} reconnectOnMount={true}>
       <Router>
-        {/* <Navigation /> */}
+        {/* <NavBar /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/gate" element={<Gate />} />
