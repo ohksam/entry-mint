@@ -17,6 +17,9 @@ const NavBar = () => {
     const { disconnect } = useDisconnect();
     const { address, isConnected } = useAccount();
 
+    console.log(connectors.map(c => ({ name: c.name, ready: c.ready, id: c.id })));
+
+
     return (
         <nav>
             {isConnected && address ? (
@@ -29,7 +32,6 @@ const NavBar = () => {
                     <button
                         key={connector.uid}
                         onClick={() => connect({ connector })}
-                        disabled={!connector.ready}
                     >
                         Connect {connector.name}
                         {isPending && " (connecting...)"}
