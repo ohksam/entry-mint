@@ -1,3 +1,35 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider } from 'wagmi'
+import { BrowserRouter, Routes, Route } from 'react-router';
+import { config } from './config';
+
+import NavBar from './components/NavBar';
+import HomePage from './components/HomePage';
+import Gate from './components/Gate';
+import Success from './components/Success';
+
+const queryClient = new QueryClient();
+
+function App() {
+  return (
+    <WagmiProvider config={config} reconnectOnMount={true}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/gate" element={<Gate />} />
+            <Route path="/success" element={<Success />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </WagmiProvider>
+  )
+}
+
+export default App;
+
+
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
@@ -33,37 +65,3 @@
 // }
 
 // export default App
-
-import { WagmiProvider, createConfig } from 'wagmi'
-import { sepolia } from 'wagmi/chains';
-import { createClient, http } from 'viem';
-import { BrowserRouter as Router, Routes, Route } from 'react-router';
-
-import NavBar from './components/NavBar';
-import HomePage from './components/HomePage';
-import Gate from './components/Gate';
-import Success from './components/Success';
-
-const config = createConfig({
-  chains: [sepolia],
-  client({ chain }) {
-    return createClient({ chain, transport: http()}) // what's the http argument?
-  }
-})
- 
-function App() {
-  return (
-    <WagmiProvider config={config} reconnectOnMount={true}>
-      <Router>
-        {/* <NavBar /> */}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/gate" element={<Gate />} />
-          <Route path="/success" element={<Success />}/>
-        </Routes>
-      </Router>
-    </WagmiProvider>
-  )
-}
-
-export default App;

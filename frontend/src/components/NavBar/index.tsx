@@ -17,12 +17,6 @@ const NavBar = () => {
     const { disconnect } = useDisconnect();
     const { address, isConnected } = useAccount();
 
-
-
-    // return (
-    //     // <text>testing</text>
-    // )
-
     return (
         <nav>
             {isConnected && address ? (
