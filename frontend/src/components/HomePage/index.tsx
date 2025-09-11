@@ -14,7 +14,15 @@ const HomePage = () => {
     return (
         <div>
             <h1>Welcome to EntryMint!</h1>
-            <button>Connect wallet!</button>
+            <div>EntryMint lets you experience token-gated access in a fun, secure way.</div>
+            {/* <br/> */}
+            <div>Connect your wallet, mint a free entry token, and head inside!</div>
+            {/* <br/> */}
+            <div>This is a testnet demo - no real ETH required!</div>
+            {/* <br/> */}
+            <div>PLEASE DO NOT CONNECT A WALLET WITH REAL FUNDS</div>
+            {/* <br/> */}
+            <button>Proceed to Gate</button>
         </div>
     )
 }
