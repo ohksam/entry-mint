@@ -1,7 +1,8 @@
 // NAV BAR
 // imports
 import { useConnect, useDisconnect, useAccount } from "wagmi";
-// import type { Address } from "wagmi";
+
+import './NavBar.css';
 
 // interfaces
 
@@ -20,7 +21,7 @@ const NavBar = () => {
     // console.log(connectors.map(c => ({ name: c.name, ready: c.ready, id: c.id })));
 
     return (
-        <nav>
+        <nav className="navbar">
             {isConnected && address ? (
                 <div>
                     <span>Connected: {address.slice(0, 6)}...{address.slice(-4)}</span>

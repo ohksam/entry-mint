@@ -9,7 +9,7 @@
 
 const Success = () => {
     return (
-        <div>
+        <div className="page-container">
             <h1>Welcome to the Success Page</h1>
         </div>
     )

@@ -1,6 +1,11 @@
 // HOME PAGE
 // imports
 
+import type React from "react";
+import { useNavigate } from "react-router";
+
+import './HomePage.css'
+
 // interfaces (probably not needed for home)
 
 // This component will have:
@@ -11,8 +16,21 @@
 
 
 const HomePage = () => {
+
+    const navigate = useNavigate();
+
+    const handleTestClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        alert('Anchor clicked! you got this!');
+    };
+
+    const handleProceed = () => {
+        navigate("/gate");
+    };
+
     return (
-        <div>
+        <div className="page-container">
+            <a href="#" onClick={handleTestClick}>Test Anchor</a>
             <h1>Welcome to EntryMint!</h1>
             <div>EntryMint lets you experience token-gated access in a fun, secure way.</div>
             {/* <br/> */}
@@ -22,7 +40,7 @@ const HomePage = () => {
             {/* <br/> */}
             <div>PLEASE DO NOT CONNECT A WALLET WITH REAL FUNDS</div>
             {/* <br/> */}
-            <button>Proceed to Gate</button>
+            <button onClick={handleProceed}>Proceed to Gate</button>
         </div>
     )
 }
