@@ -1,6 +1,7 @@
 // GATE
 //imports
 import { useAccount } from "wagmi";
+import { useNavigate } from "react-router";
 
 // interfaces
 
@@ -14,9 +15,10 @@ import { useAccount } from "wagmi";
 const SEPOLIA_FAUCET_URL = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
 
 const Gate = () => {
+    const navigate = useNavigate();
     const { address, isConnected } = useAccount();
     // contract token-check logic here
-    const hasToken = false;
+    const hasToken = true;
     const isMinting = false;
     const onMint: () => void = () => {
         // placeholder for now
@@ -31,13 +33,13 @@ const Gate = () => {
                 <br />
                 {isConnected ? (
                     hasToken ? (
-                        <span> You have access! <a href="/success">Continue</a></span>
+                        <span> You have access! <button onClick={() => navigate('/successPage')}>Continue</button></span> // make this a button lmao
                     ) : (
                         <div>
                             <b>Don't have a token yet?</b>
                             <button disabled={isMinting} onClick={onMint}>Mint your free Entry Token</button>
                             <p>
-                                Need Sepolia ETH for gas? <a href={SEPOLIA_FAUCET_URL} target="_blank" rel="noopner">Get testnet ETH here.</a>
+                                Need Sepolia ETH for gas? <a href={SEPOLIA_FAUCET_URL} target="_blank" rel="noopener">Get testnet ETH here.</a>
                             </p>
                         </div>
                     )

@@ -6,7 +6,7 @@ import { config } from './config';
 import NavBar from './components/NavBar';
 import HomePage from './components/HomePage';
 import Gate from './components/Gate';
-import Success from './components/Success';
+import SuccessPage from './components/SuccessPage';
 
 const queryClient = new QueryClient();
 
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/gate" element={<Gate />} />
-            <Route path="/success" element={<Success />} />
+            <Route path="/successPage" element={<SuccessPage />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
