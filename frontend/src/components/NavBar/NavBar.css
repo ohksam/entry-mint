@@ -4,8 +4,8 @@
   left: 0;
   right: 0;
   z-index: 50;
-  background: rgba(0,0,0,0.85);       /* Semi-transparent black */
-  backdrop-filter: blur(12px);        /* Frosted glass effect */
+  background: rgba(0,0,0,0.85);     /* Semi-transparent black */
+  backdrop-filter: blur(12px);      /* Frosted glass effect */
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -13,6 +13,11 @@
   min-height: 64px;                   /* Or whatever you like */
   font-size: 1.1rem;
 }
+
+.navbar > div {
+    margin-left: auto;
+}
+
 .navbar button {
   margin-left: 1rem;
   font-size: 1rem;
@@ -24,9 +29,11 @@
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .navbar button:hover {
   background: #333;
 }
+
 .navbar span {
   margin-right: 1rem;
   font-weight: 500;
