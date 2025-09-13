@@ -13,6 +13,8 @@ import './NavBar.css';
 // If connected:
 // "Conncected: [wallet address]"" + "Disconnect"
 
+const SEPOLIA_FAUCET_URL = "https://cloud.google.com/application/web3/faucet/ethereum/sepolia";
+
 const NavBar = () => {
     const { connect, connectors, isPending } = useConnect();
     const { disconnect } = useDisconnect();
@@ -22,26 +24,43 @@ const NavBar = () => {
 
     return (
         <nav className="navbar">
-            {isConnected && address ? (
-                <div>
-                    <span>Connected: {address.slice(0, 6)}...{address.slice(-4)}</span>
-                    <button onClick={() => disconnect()}>Disconnect</button>
-                </div>
-            ) : (
-                <div>
-                    <span>Please do not connect a wallet with real funds!</span>
-                    {connectors.map((connector) => (
-                        <button
-                            key={connector.uid}
-                            onClick={() => connect({ connector })}
-                        >
-                            Connect {connector.name}
-                            {isPending && " (connecting...)"}
-                        </button>
-                    ))}
-                </div>
-            )
-            }
+            <div className="navbar-left">
+                <span className="logo">EntryMint</span>
+            </div>
+            <div className="navbar-right">
+                {isConnected && address ? (
+                    <>
+                        <span>
+                            <a
+                                href={SEPOLIA_FAUCET_URL}
+                                target="_blank"
+                                rel="noopener"
+                                className="faucet-link"
+                            >
+                                Get Sepolia ETH
+                            </a>
+                        </span>
+                        <span className="wallet-status">
+                            Connected: {address.slice(0, 6)}...{address.slice(-4)}
+                        </span>
+                        <button onClick={() => disconnect()}>Disconnect</button>
+                    </>
+                ) : (
+                    <div>
+                        <span>Please do not connect a wallet with real funds!</span>
+                        {connectors.map((connector) => (
+                            <button
+                                key={connector.uid}
+                                onClick={() => connect({ connector })}
+                            >
+                                Connect {connector.name}
+                                {isPending && " (connecting...)"}
+                            </button>
+                        ))}
+                    </div>
+                )
+                }
+            </div>
         </nav>
     )
 }

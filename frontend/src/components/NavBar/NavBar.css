@@ -1,25 +1,51 @@
 .navbar {
   position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 50;
-  background: rgba(0,0,0,0.85);     /* Semi-transparent black */
-  backdrop-filter: blur(12px);      /* Frosted glass effect */
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(12px);
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 64px;                   /* Or whatever you like */
+  min-height: 64px;
   font-size: 1.1rem;
 }
 
-.navbar > div {
-    margin-left: auto;
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* spaces right side items nicely */
+}
+
+.faucet-link {
+  color: #3c71f6;
+  font-weight: 500;
+  text-decoration: underline;
+  transition: color 0.18s;
+}
+.faucet-link:hover { color: #8eaefb; }
+
+.wallet-status {
+  color: #b7f25e;
+  font-weight: 500;
+  margin-right: 0.5rem;
 }
 
 .navbar button {
-  margin-left: 1rem;
   font-size: 1rem;
   padding: 0.4em 1em;
   border-radius: 6px;
@@ -28,15 +54,6 @@
   color: #fff;
   cursor: pointer;
   transition: background 0.2s;
+  /* No margin-left, gap handles spacing */
 }
-
-.navbar button:hover {
-  background: #333;
-}
-
-.navbar span {
-  margin-right: 1rem;
-  font-weight: 500;
-  color: #b7f25e;
-  /* Or use white/gray if you want */
-}
+.navbar button:hover { background: #333; }

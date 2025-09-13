@@ -33,7 +33,11 @@ const Gate = () => {
                 <br />
                 {isConnected ? (
                     hasToken ? (
-                        <span> You have access! <button onClick={() => navigate('/successPage')}>Continue</button></span> // make this a button lmao
+                        <div>
+                            <span> You have access!</span>
+                            <br/>
+                            <button onClick={() => navigate('/successPage')}>Continue</button>
+                        </div>
                     ) : (
                         <div>
                             <b>Don't have a token yet?</b>
