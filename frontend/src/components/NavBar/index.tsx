@@ -46,8 +46,8 @@ const NavBar = () => {
                         <button onClick={() => disconnect()}>Disconnect</button>
                     </>
                 ) : (
-                    <div>
-                        <span>Please do not connect a wallet with real funds!</span>
+                    <>
+                        <span className="warning-text">Please do not connect a wallet with real funds!</span>
                         {connectors.map((connector) => (
                             <button
                                 key={connector.uid}
@@ -57,7 +57,7 @@ const NavBar = () => {
                                 {isPending && " (connecting...)"}
                             </button>
                         ))}
-                    </div>
+                    </>
                 )
                 }
             </div>
